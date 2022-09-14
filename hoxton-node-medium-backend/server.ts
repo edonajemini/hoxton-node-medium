@@ -14,8 +14,6 @@ app.get('/', (req, res) => {
     <ul>
     <li><a href="/users">Users</a></li>
     <li><a href="/posts">Posts</a></li>
-    <li><a href="/likes">Likes</a></li>
-    <li><a href="/comments">Comments</a></li>
     </ul>
     `)
   })
