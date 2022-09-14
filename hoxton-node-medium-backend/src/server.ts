@@ -113,6 +113,17 @@ app.post('/posts', async (req, res)=>{
   res.status(400).send({ errors: errors })
 }
 })
+//get likes
+app.get('/likes', async(req, res)=>{
+  const likes = await prisma.likes.findMany()
+  res.send(likes)
+})
+
+//get comments
+app.get('/comments', async(req, res)=>{
+  const comments = await prisma.comments.findMany()
+  res.send(comments)
+})
 //Like a Post
 app.post('/likePosts', async (req, res)=>{
   const like = {

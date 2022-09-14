@@ -2,3 +2,29 @@
   text-align: center;
 }
 
+.posts {
+  margin:50px 250px;
+  padding:10px 20px;
+  border-top:thin solid rgba(128, 128, 128, 0.429);
+  background-color: rgba(220, 220, 220, 0.119);
+}
+.tittle{
+  text-align: left;
+}
+.like-com-delete{
+  display: grid;
+  grid-auto-flow: column;
+  margin-top: 100px;
+}
+.like-com-delete button{
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+  font-weight: 600;
+}
+.like-com-delete button:hover{
+  color: rgba(0, 0, 0, 0.523);
+}
+.posts img{
+  float: right;
+}

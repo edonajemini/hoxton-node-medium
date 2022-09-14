@@ -8,13 +8,38 @@ type Posts = {
     likes :[]
     comments :[]
   }
+type Comments = {
+    id: number
+    text: string
+    userId: number
+}
   export function Home(){
     const [posts, setPosts] = useState<Posts[]>([])
+    const [users, setUsers] = useState([
+        useEffect(() => {
+            fetch("http://localhost:4000/users")
+              .then((resp) => resp.json())
+              .then((usersFromServer) => setUsers(usersFromServer));
+          }, [])
+    ]);
+    const [likes, setLikes] = useState([]);
+    const [comments, setComments] = useState<Comments[]>([])
     useEffect(() => {
       fetch("http://localhost:4000/posts")
         .then((resp) => resp.json())
         .then((postsFromServer) => setPosts(postsFromServer));
     }, []);
+    useEffect(() => {
+        fetch("http://localhost:4000/likes")
+          .then((resp) => resp.json())
+          .then((likesFromServer) => setLikes(likesFromServer));
+      }, []);
+    useEffect(() => {
+        fetch(`http://localhost:4000/comments/`)
+          .then((resp) => resp.json())
+          .then((commentsFromServer) => setComments(commentsFromServer));
+      }, []);
+  
 
     return(
         <div>
@@ -55,6 +80,13 @@ setPosts(postCopy)
  </button>
 </form>
             {
+                users.map(user => (
+                    <>
+                    <h3>{user.}</h3>
+                    </>
+                ))
+            }
+            {
             posts.map(post => (
                 <div className='posts'>
                   <div className='tittle'>
@@ -64,8 +96,9 @@ setPosts(postCopy)
                     <div className='image'>
                     <img src={post.image} width="200px" />
                     </div>
-                      <h4>❤️{post.likes.length}</h4>
-                      <h4>💬{post.comments.length}</h4>
+                    <div className='like-com-delete'>
+                    <h4>❤️{post.likes.length}</h4>
+                    <h4>💬{post.likes.length}</h4>
                       <button onClick={()=>{
                       fetch(`http://localhost:4000/posts/${post.id}`,{
                         method:"DELETE"
@@ -74,8 +107,8 @@ setPosts(postCopy)
                     location.reload()
                       )
                   
-                    }}> REMOVE </button>
-                      
+                    }}> DELETE </button>
+                      </div>
                 </div>
               ))}
         </div>
