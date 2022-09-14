@@ -29,7 +29,7 @@ app.get('/users', async(req, res)=>{
 app.get('/users/:id', async (req, res) => {
     const user = await prisma.users.findUnique({
       where: { id: Number(req.params.id) },
-      include: { posts: true }
+      include: { posts: true}
     })
   
     if (user) {
@@ -46,16 +46,16 @@ app.delete('/users/:id', async (req, res) => {
     })
     res.send({message: "User deleted"})
   })
-//get posts with the users who wrote them
+//get posts with likes, comments and the user who wrote them
 app.get('/posts', async(req, res)=>{
-  const posts = await prisma.posts.findMany({include:{user: true}})
+  const posts = await prisma.posts.findMany({include:{user: true, likes:true, comments:true}})
   res.send(posts)
 })
-// get posts with their user by ID
+// get posts with likes, comments and their user by ID
 app.get('/posts/:id', async (req, res) => {
   const post = await prisma.posts.findUnique({
     where: { id: Number(req.params.id) },
-    include: { user: true }
+    include: { user: true, likes: true, comments:true }
   })
 
   if (post) {

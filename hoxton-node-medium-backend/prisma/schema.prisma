@@ -30,13 +30,11 @@ model Users {
 
 model Likes{
   id Int @id @default(autoincrement())
-  howmany Int
   post Posts @relation(fields: [postId], references: [id])
   postId Int
 }
 model Comments{
   id Int @id @default(autoincrement())
-  howmany Int
   text String
   post Posts @relation(fields: [postId], references: [id])
   postId Int
