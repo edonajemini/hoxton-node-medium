@@ -1,12 +1,20 @@
-import { useState } from 'react'
+
+import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
+import { Home } from './pages/Home'
+import { SinglePostPage } from './pages/SinglePostPage'
+
 
 function App() {
-
+ 
   return (
     <div className="App">
-      <h1>hoxton-node-medium-frontend</h1>
-      <h2>Gonna work on this later</h2>
+      <Routes>
+      <Route index element={<Navigate to="/home" />} />
+      <Route path="home" element= {<Home />} />
+      <Route path="post/:id" element={<SinglePostPage />} />
+      </Routes>
+      
     </div>
   )
 }
