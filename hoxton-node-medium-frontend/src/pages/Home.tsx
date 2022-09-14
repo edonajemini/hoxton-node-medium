@@ -79,13 +79,7 @@ setPosts(postCopy)
  Post
  </button>
 </form>
-            {
-                users.map(user => (
-                    <>
-                    <h3>{user.}</h3>
-                    </>
-                ))
-            }
+            
             {
             posts.map(post => (
                 <div className='posts'>
