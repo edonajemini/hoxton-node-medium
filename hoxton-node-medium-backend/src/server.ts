@@ -65,7 +65,7 @@ app.get('/posts/:id', async (req, res) => {
 //delete post
 app.delete('/posts/:id', async (req, res) => {
   const id = Number(req.params.id)
-  const post = await prisma.users.delete({
+  const post = await prisma.posts.delete({
     where: { id }
   })
   res.send({message: "Post deleted"})
