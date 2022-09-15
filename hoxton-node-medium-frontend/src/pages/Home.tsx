@@ -98,7 +98,16 @@ const [comments, setComments] = useState<Comments[]>([])
                     <img src={post.image} width="200px" />
                     </div>
                     <div className='like-com-delete'>
-                    <h4><button type="button" onClick={() => setLikes((likes) => likes + 1)}>❤️</button>{post.likes.length + likes}</h4>
+                    <h4> <button
+          onClick={() => {
+            fetch(`http://localhost:4000/likePosts`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ postId: post.id }) ,
+            }).then((resp)=> resp.json()).then(()=> location.reload());
+          }}>❤️</button>{post.likes.length}</h4>
                     <h4><button>💬</button>{post.comments.length}</h4>
                       <button onClick={()=>{
                       fetch(`http://localhost:4000/posts/${post.id}`,{

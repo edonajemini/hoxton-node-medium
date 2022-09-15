@@ -28,3 +28,14 @@
 .posts img{
   float: right;
 }
+form {
+  display: grid;
+  grid-auto-flow: row;
+  margin: 10px 400px;
+  gap: 10px;
+  background-color: rgba(220, 220, 220, 0.371);
+  padding: 20px;
+}
+form button{
+  margin:0 200px;
+}

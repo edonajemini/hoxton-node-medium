@@ -13,7 +13,7 @@ function App() {
       <Route index element={<Navigate to="/home" />} />
       <Route path="home" element= {<Home />} />
       <Route path="post/:id" element={<SinglePostPage />} />
-      </Routes>
+        </Routes>
       
     </div>
   )
