@@ -11,6 +11,9 @@
   background-color: rgba(220, 220, 220, 0.119);
   
 }
+img {
+margin: 10px;
+}
 a {
   text-decoration: none;
   color: black;

@@ -43,16 +43,15 @@ export function SinglePostPage() {
                 
                 <div className='posts'>
                   <div className='tittle'>
+                  <img src={post.image} width="400px" />
                     <h3>{post.tittle}</h3>
                     <p>{post.blog}</p>
-                    
                     <p>{post.blog}</p>
                     <p>{post.blog}</p>
                     <p>{post.blog}</p>
                     <p>{post.blog}</p>
                     </div>
                     <div className='image'>
-                    <img src={post.image} width="200px" />
                     </div>
                     <div className='like-com-delete'>
                     <h4> <button
