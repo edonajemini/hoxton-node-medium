@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Users } from '../components/Users'
 type Posts = {
     id : number,
     tittle: string,
@@ -36,6 +37,7 @@ const [comments, setComments] = useState<Comments[]>([])
      
     return(
         <div>
+          < Users />
             
             <form onSubmit={event => 
            {event.preventDefault()
@@ -89,6 +91,7 @@ const [comments, setComments] = useState<Comments[]>([])
                   
                   <div className='tittle'>
                     <h3>{post.tittle}</h3>
+                    <p>User ID: {post.id}</p>
                     <p>{post.blog}..</p>
                     </div>
                     <div className='image'>
@@ -107,8 +110,8 @@ const [comments, setComments] = useState<Comments[]>([])
               },
               body: JSON.stringify({ postId: post.id }) ,
             }).then((resp)=> resp.json()).then(()=> location.reload());
-          }}>❤️</button>{post.likes.length}</h4>
-                    <h4><button>💬</button>{post.comments.length}</h4>
+          }}>❤️</button>{post.likes.length} likes</h4>
+                    <h4><button>💬</button>{post.comments.length} comments</h4>
                       <button onClick={()=>{
                       fetch(`http://localhost:4000/posts/${post.id}`,{
                         method:"DELETE"

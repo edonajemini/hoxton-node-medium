@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 type User = {
+    id: ReactNode;
     username : string,
     image : string,
     email: string,
@@ -18,12 +19,13 @@ export function Users(){
                 users.map(user=>(
                     <>
                     <ul>
-                    <li>{user.username}</li>
+                    <li>{user.username.toUpperCase()}</li>
                     <p>{user.email}</p>
                     <p>user ID:{user.id}</p>
                     </ul>
                     </>
                 ))
+                
             }
         </div>
     )
