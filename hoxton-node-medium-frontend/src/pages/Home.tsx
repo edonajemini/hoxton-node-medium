@@ -86,6 +86,7 @@ const [comments, setComments] = useState<Comments[]>([])
   }}>POST</button>
             </form>
             
+            
             {
             posts.map(post => (
                 <>
@@ -96,7 +97,7 @@ const [comments, setComments] = useState<Comments[]>([])
                   
                   <div className='tittle'>
                     <h3>{post.tittle}</h3>
-                    <p>{post.blog}-</p>
+                    <p>{post.blog}..</p>
                     </div>
                     <div className='image'>
                     <img src={post.image} width="200px" />

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family:'Times New Roman', Times, serif;
 }
 
 
@@ -8,12 +9,15 @@
   padding:10px 20px;
   border-top:thin solid rgba(128, 128, 128, 0.429);
   background-color: rgba(220, 220, 220, 0.119);
+  
 }
 a {
   text-decoration: none;
   color: black;
 }
-
+p{
+  color: rgb(62, 62, 62);
+}
 .tittle{
   text-align: left;
 }

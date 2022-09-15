@@ -10,10 +10,23 @@ type Post = {
     likes: []
     comments:[]
   }
+  type Comments = {
+    id: number
+    text: string
+    postId: number
+}
 
 export function SinglePostPage() {
   const [post, setPost] = useState<Post | null>(null);
   const params = useParams();
+    
+  const [comments, setComments] = useState<Comments[]>([])
+
+  useEffect(() => {
+      fetch(`http://localhost:4000/comments/`)
+        .then((resp) => resp.json())
+        .then((commentsFromServer) => setComments(commentsFromServer));
+    }, []);
 
   useEffect(() => {
     fetch(`http://localhost:4000/posts/${params.id}`)
@@ -31,7 +44,12 @@ export function SinglePostPage() {
                 <div className='posts'>
                   <div className='tittle'>
                     <h3>{post.tittle}</h3>
-                    <p>{post.blog}-</p>
+                    <p>{post.blog}</p>
+                    
+                    <p>{post.blog}</p>
+                    <p>{post.blog}</p>
+                    <p>{post.blog}</p>
+                    <p>{post.blog}</p>
                     </div>
                     <div className='image'>
                     <img src={post.image} width="200px" />
@@ -47,7 +65,7 @@ export function SinglePostPage() {
               body: JSON.stringify({ postId: post.id }) ,
             }).then((resp)=> resp.json()).then(()=> location.reload());
           }}>❤️</button>{post.likes.length}</h4>
-                    <h4><button>💬</button>{post.comments.length}</h4>
+                    <h4><button>💬{post.comments.length}</button></h4>
                       <button onClick={()=>{
                       fetch(`http://localhost:4000/posts/${post.id}`,{
                         method:"DELETE"
