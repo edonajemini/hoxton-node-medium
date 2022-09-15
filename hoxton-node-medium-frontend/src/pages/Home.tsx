@@ -14,11 +14,7 @@ type Comments = {
     text: string
     postId: number
 }
-type Users = {
-    username : string,
-    image : string,
-    email: string,
-}
+
   export function Home(){
     const [posts, setPosts] = useState<Posts[]>([])
     useEffect(() => {
@@ -26,12 +22,7 @@ type Users = {
           .then((resp) => resp.json())
           .then((postsFromServer) => setPosts(postsFromServer));
       }, []);
-    const [users, setUsers] = useState<Users[]>([])
-  useEffect(() => {
-    fetch("http://localhost:4000/users")
-        .then((resp) => resp.json())
-        .then((usersFromServer) => setUsers(usersFromServer));
-}, [])
+    
 const [likes, setLikes] = useState(0)
     
 const [comments, setComments] = useState<Comments[]>([])
@@ -42,10 +33,10 @@ const [comments, setComments] = useState<Comments[]>([])
           .then((commentsFromServer) => setComments(commentsFromServer));
       }, []);
   
-
+     
     return(
         <div>
-            <h2>Add Post</h2>
+            
             <form onSubmit={event => 
            {event.preventDefault()
             const postsCopy = structuredClone(posts)
@@ -61,6 +52,7 @@ const [comments, setComments] = useState<Comments[]>([])
 
               event.target.reset();
             }}>
+              <h2>Add Post</h2>
                 <input type='text' name="tittle" id="tittle" placeholder='Tittle?' required></input>
                 <textarea name='blog' id='blog' placeholder='Your Blog?' required></textarea>
                 <input type='url' name='image' id='image' placeholder='Image?'></input>
@@ -88,7 +80,7 @@ const [comments, setComments] = useState<Comments[]>([])
             
             
             {
-            posts.map(post => (
+            posts.reverse().map(post => (
                 <>
                 <div className='posts'>
                   <div link-div>

@@ -52,3 +52,18 @@ form {
 form button{
   margin:0 200px;
 }
+.users-nav{
+  display: grid;
+  grid-auto-flow: row;
+  float: left;
+  margin: 10px;
+}
+ul{
+  list-style: none;
+  border-radius: 25px;
+  padding: 5px;
+  border: thin solid gray;
+}
+.users-nav ul:hover{
+background-color: rgba(128, 128, 128, 0.277);
+}

@@ -38,12 +38,15 @@ app.get('/users/:id', async (req, res) => {
   })
 //delete user
 app.delete('/users/:id', async (req, res) => {
-    const id = Number(req.params.id)
+  try {
     const user = await prisma.users.delete({
-      where: { id }
+      where: { id: Number(req.params.id) }
     })
-    res.send({message: "User deleted"})
-  })
+    res.send(user)
+  } catch (error) {
+    res.status(400).send({ error: error })
+  }
+})
 //get all the posts with likes, comments and the user who wrote them
 app.get('/posts', async(req, res)=>{
   const posts = await prisma.posts.findMany({include:{user: true, likes:true, comments:true}})
@@ -64,11 +67,14 @@ app.get('/posts/:id', async (req, res) => {
 })
 //delete post
 app.delete('/posts/:id', async (req, res) => {
-  const id = Number(req.params.id)
-  const post = await prisma.posts.delete({
-    where: { id }
-  })
-  res.send({message: "Post deleted"})
+  try {
+    const post = await prisma.posts.delete({
+      where: { id: Number(req.params.id) }
+    })
+    res.send(post)
+  } catch (error) {
+    res.status(400).send({ error: error })
+  }
 })
 
 //create a Post
