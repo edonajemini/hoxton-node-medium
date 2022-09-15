@@ -11,8 +11,8 @@ function App() {
     <div className="App">
       <Routes>
       <Route index element={<Navigate to="/home" />} />
-      <Route path="home" element= {<Home />} />
-      <Route path="post/:id" element={<SinglePostPage />} />
+      <Route path="/home" element= {<Home />} />
+      <Route path="/posts/:id" element={<SinglePostPage />} />
         </Routes>
       
     </div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 type Posts = {
     id : number,
     tittle: string,
@@ -88,8 +89,11 @@ const [comments, setComments] = useState<Comments[]>([])
             {
             posts.map(post => (
                 <>
-                
                 <div className='posts'>
+                  <div link-div>
+            
+                  <Link to={`/posts/${post.id}`}>
+                  
                   <div className='tittle'>
                     <h3>{post.tittle}</h3>
                     <p>{post.blog}-</p>
@@ -97,6 +101,9 @@ const [comments, setComments] = useState<Comments[]>([])
                     <div className='image'>
                     <img src={post.image} width="200px" />
                     </div>
+                    </Link>
+                    </div>
+                    
                     <div className='like-com-delete'>
                     <h4> <button
           onClick={() => {
@@ -120,6 +127,7 @@ const [comments, setComments] = useState<Comments[]>([])
                     }}> DELETE </button>
                       </div>
                 </div>
+                
                 </>
               ))}
 

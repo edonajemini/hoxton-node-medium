@@ -2,12 +2,18 @@
   text-align: center;
 }
 
+
 .posts {
   margin:50px 250px;
   padding:10px 20px;
   border-top:thin solid rgba(128, 128, 128, 0.429);
   background-color: rgba(220, 220, 220, 0.119);
 }
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .tittle{
   text-align: left;
 }
