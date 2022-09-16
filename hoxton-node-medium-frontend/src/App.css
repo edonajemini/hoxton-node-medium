@@ -41,7 +41,7 @@ p{
 .posts img{
   float: right;
 }
-form {
+.home form {
   display: grid;
   grid-auto-flow: row;
   margin: 10px 400px;
@@ -49,7 +49,7 @@ form {
   background-color: rgba(220, 220, 220, 0.371);
   padding: 20px;
 }
-form button{
+.home form button{
   margin:0 200px;
 }
 .users-nav{
@@ -66,4 +66,37 @@ ul{
 }
 .users-nav ul:hover{
 background-color: rgba(128, 128, 128, 0.277);
+}
+
+.comments p{
+  display: grid;
+  margin: 10px 300px;
+  background-color: rgba(192, 192, 192, 0.146);
+  justify-content:left;
+  text-align: center;
+  padding:10px 50px;
+  border-radius: 20px;
+}
+.comment-form input{
+  border-radius: 20px;
+  background-color: rgba(192, 192, 192, 0.146);
+  width: 200px;
+  height: 30px;
+  border: none;
+  margin: 5px;
+  padding: 0 10px;
+}
+.comment-form button{
+  border-radius: 20px;
+  background-color: rgba(192, 192, 192, 0.146);
+  width: 100px;
+  height: 30px;
+  margin: 5px;
+  border: thin solid gray;
+}
+.comment-form button:hover{
+  color: rgb(83, 83, 83);
+}
+.comment-form input::placeholder{
+  padding: 0 10px;
 }

@@ -1,0 +1,40 @@
+ <form onSubmit={event => 
+           {event.preventDefault()
+            const postsCopy = structuredClone(posts)
+              
+              let newPost = {
+                tittle: event.target.tittle.value,
+                blog: event.target.blog.value,
+                image: event.target.image.value,
+                userid: event.target.userid.value
+              }
+              postsCopy.push(newPost);
+              setPosts(postsCopy)
+
+              event.target.reset();
+            }}>
+              <h2>Add Post</h2>
+                <input type='text' name="tittle" id="tittle" placeholder='Tittle?' required></input>
+                <textarea name='blog' id='blog' placeholder='Your Blog?' required></textarea>
+                <input type='url' name='image' id='image' placeholder='Image?'></input>
+                <input type='number' name="userid" id='userid' placeholder='user ID' required></input>
+                <button className='post-btn' onClick={(event)=>{
+    fetch("http://localhost:4000/posts",{
+      method: 'POST',
+      headers: {
+        'content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+
+        tittle: document.getElementById("tittle")?.value,
+        blog: document.getElementById("blog")?.value,
+        image: document.getElementById("image")?.value,
+        userid: document.getElementById("userid")?.value
+        
+      }
+      )
+    }) .then(resp => resp.json())
+    .then(postsfromserver => setPosts([...posts, postsfromserver]))
+    location.reload()
+  }}>POST</button>
+            </form>
