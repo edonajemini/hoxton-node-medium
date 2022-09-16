@@ -36,8 +36,8 @@ export function Home() {
 
   return (
     <div className="home">
+      <h1>Blogs..</h1>
       <Users />
-
       <form
         onSubmit={(event) => {
           event.preventDefault();
