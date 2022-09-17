@@ -33,11 +33,7 @@ export function SinglePostPage() {
       .then((postFromServer) => setPost(postFromServer));
   }, []);
 
-  useEffect(() => {
-    fetch(`http://localhost:4000/users`)
-      .then((resp) => resp.json())
-      .then((usersFromServer) => setUsers(usersFromServer));
-  }, []);
+
   if (post === null) return <h1>Loading... </h1>;
 
   return (

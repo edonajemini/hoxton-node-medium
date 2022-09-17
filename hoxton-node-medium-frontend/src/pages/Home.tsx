@@ -10,11 +10,6 @@ type Posts = {
   likes: [];
   comments: [];
 };
-type Comments = {
-  id: number;
-  text: string;
-  postId: number;
-};
 
 export function Home() {
   const [posts, setPosts] = useState<Posts[]>([]);
@@ -22,16 +17,6 @@ export function Home() {
     fetch("http://localhost:4000/posts")
       .then((resp) => resp.json())
       .then((postsFromServer) => setPosts(postsFromServer));
-  }, []);
-
-  const [likes, setLikes] = useState(0);
-
-  const [comments, setComments] = useState<Comments[]>([]);
-
-  useEffect(() => {
-    fetch(`http://localhost:4000/comments/`)
-      .then((resp) => resp.json())
-      .then((commentsFromServer) => setComments(commentsFromServer));
   }, []);
 
   return (
