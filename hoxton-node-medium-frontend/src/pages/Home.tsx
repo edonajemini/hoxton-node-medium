@@ -118,8 +118,11 @@ export function Home() {
                       },
                       body: JSON.stringify({ postId: post.id }),
                     })
-                      .then((resp) => resp.json())
-                      .then(() => location.reload());
+                    .then(() => {
+                      fetch("http://localhost:4000/posts")
+                        .then((resp) => resp.json())
+                        .then((postsFromServer) => setPosts(postsFromServer));
+                    });
                   }}
                 >
                   ❤️

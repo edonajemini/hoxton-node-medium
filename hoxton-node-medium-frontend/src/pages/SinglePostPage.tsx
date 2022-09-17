@@ -66,19 +66,44 @@ export function SinglePostPage() {
                       "Content-Type": "application/json",
                     },
                     body: JSON.stringify({ postId: post.id }),
-                  })
-                    .then((resp) => resp.json())
-                    .then(() => location.reload());
+                  }).then(() => {
+                    fetch(`http://localhost:4000/posts/${params.id}`)
+                      .then((resp) => resp.json())
+                      .then((postFromServer) => setPost(postFromServer));
+                  });
                 }}
               >
                 ❤️
               </button>
               {post.likes.length} Likes
             </h4>
-            <h4>
-              <button>💬</button>
-              {post.comments.length} Comments
-            </h4>
+            <div className="comment-section">
+              <h4>{post.comments.length} 💬</h4>
+              <input
+                className="comment-input"
+                type="text"
+                name="text"
+                placeholder="Comment.."
+                required
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  let newComment = {
+                    text: event.target.tittle.value
+                  };
+                  fetch(`http://localhost:4000/commentPosts`, {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({postId:post.id}),
+                  }).then(() => {
+                    fetch(`http://localhost:4000/posts/${params.id}`)
+                      .then((resp) => resp.json())
+                      .then((postFromServer) => setPost(postFromServer));
+                  });
+                }}
+              ></input>
+            </div>
             <button
               onClick={() => {
                 fetch(`http://localhost:4000/posts/${post.id}`, {
@@ -92,11 +117,7 @@ export function SinglePostPage() {
               DELETE{" "}
             </button>
           </div>
-          <form
-            className="comment-form">
-            <input type="text" name="text" placeholder="Comment.." required></input>
-            <button>COMMENT</button>
-          </form>
+
           {post.comments.map((comment) => (
             <div className="comments">
               <p>💬 {comment.text}</p>
