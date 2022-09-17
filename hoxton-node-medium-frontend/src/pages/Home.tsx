@@ -102,8 +102,7 @@ export function Home() {
                         "Content-Type": "application/json",
                       },
                       body: JSON.stringify({ postId: post.id }),
-                    })
-                    .then(() => {
+                    }).then(() => {
                       fetch("http://localhost:4000/posts")
                         .then((resp) => resp.json())
                         .then((postsFromServer) => setPosts(postsFromServer));

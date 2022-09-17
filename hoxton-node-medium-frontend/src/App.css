@@ -1,44 +1,42 @@
 .App {
   text-align: center;
-  font-family:'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
-
 
 .posts {
-  margin:50px 250px;
-  padding:10px 20px;
-  border-top:thin solid rgba(128, 128, 128, 0.429);
+  margin: 50px 250px;
+  padding: 10px 20px;
+  border-top: thin solid rgba(128, 128, 128, 0.429);
   background-color: rgba(220, 220, 220, 0.119);
-  
 }
 img {
-margin: 10px;
+  margin: 10px;
 }
 a {
   text-decoration: none;
   color: black;
 }
-p{
+p {
   color: rgb(62, 62, 62);
 }
-.tittle{
+.tittle {
   text-align: left;
 }
-.like-com-delete{
+.like-com-delete {
   display: grid;
   grid-auto-flow: column;
   margin-top: 100px;
 }
-.like-com-delete button{
+.like-com-delete button {
   border: none;
   background-color: transparent;
   font-size: 14px;
   font-weight: 600;
 }
-.like-com-delete button:hover{
+.like-com-delete button:hover {
   color: rgba(0, 0, 0, 0.523);
 }
-.posts img{
+.posts img {
   float: right;
 }
 .home form {
@@ -49,35 +47,35 @@ p{
   background-color: rgba(220, 220, 220, 0.371);
   padding: 20px;
 }
-.home form button{
-  margin:0 200px;
+.home form button {
+  margin: 0 200px;
 }
-.users-nav{
+.users-nav {
   display: grid;
   grid-auto-flow: row;
   float: left;
   margin: 10px;
 }
-ul{
+ul {
   list-style: none;
   border-radius: 25px;
   padding: 5px;
   border: thin solid gray;
 }
-.users-nav ul:hover{
-background-color: rgba(128, 128, 128, 0.277);
+.users-nav ul:hover {
+  background-color: rgba(128, 128, 128, 0.277);
 }
 
-.comments p{
+.comments p {
   display: grid;
   margin: 10px 300px;
   background-color: rgba(192, 192, 192, 0.146);
-  justify-content:left;
+  justify-content: left;
   text-align: center;
-  padding:10px 50px;
+  padding: 10px 50px;
   border-radius: 5px;
 }
-.comment-input{
+.comment-input {
   border-radius: 20px;
   background-color: rgba(192, 192, 192, 0.673);
   width: 200px;
@@ -87,10 +85,10 @@ background-color: rgba(128, 128, 128, 0.277);
   padding: 0 10px;
 }
 
-.comment-input input::placeholder{
+.comment-input input::placeholder {
   padding: 0 10px;
 }
-.comment-section{
+.comment-section {
   display: grid;
   grid-auto-flow: column;
   justify-content: center;

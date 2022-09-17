@@ -33,7 +33,6 @@ export function SinglePostPage() {
       .then((postFromServer) => setPost(postFromServer));
   }, []);
 
-
   if (post === null) return <h1>Loading... </h1>;
 
   return (
@@ -84,14 +83,14 @@ export function SinglePostPage() {
                 onSubmit={(event) => {
                   event.preventDefault();
                   let newComment = {
-                    text: event.target.tittle.value
+                    text: event.target.tittle.value,
                   };
                   fetch(`http://localhost:4000/commentPosts`, {
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({postId:post.id}),
+                    body: JSON.stringify({ postId: post.id }),
                   }).then(() => {
                     fetch(`http://localhost:4000/posts/${params.id}`)
                       .then((resp) => resp.json())
