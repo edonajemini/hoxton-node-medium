@@ -46,10 +46,9 @@ export function SinglePostPage() {
         <div className="posts">
           <div className="tittle">
             <img src={post.image} width="400px" />
-            <p>User ID {post.userId}</p>
             {users.filter(user => user.id === post.userId).map(user => (
               <>
-              <p>@{user.username}</p>
+              <p className="username">@{user.username}</p>
               </>
             ))}
             <h3>{post.tittle}</h3>

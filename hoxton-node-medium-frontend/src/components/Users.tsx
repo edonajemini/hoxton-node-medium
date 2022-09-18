@@ -1,13 +1,15 @@
 import { ReactNode, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-type User = {
+type Users = {
   id: ReactNode;
   username: string;
   image: string;
   email: string;
+  posts: []
 };
 export function Users() {
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<Users[]>([]);
   useEffect(() => {
     fetch("http://localhost:4000/users")
       .then((resp) => resp.json())
@@ -15,15 +17,18 @@ export function Users() {
   }, []);
   return (
     <div className="users-nav">
+      
       {users.map((user) => (
         <>
+        <Link to={`/users/${user.id}`}>
           <ul>
             <li>{user.username.toUpperCase()}</li>
-            <p>{user.email}</p>
-            <p>user ID:{user.id}</p>
+            
           </ul>
+          </Link>
         </>
       ))}
+  
     </div>
   );
 }
