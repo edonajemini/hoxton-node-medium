@@ -1,13 +1,21 @@
+body{
+  font-family: "Times New Roman", Times, serif;
+  background-image: url("https://images.pexels.com/photos/4050325/pexels-photo-4050325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-repeat: no-repeat;
+  background-position: center; /* Center the image */
+  background-size: cover;
+  background-color: #cccccc;
+}
 .App {
   text-align: center;
-  font-family: "Times New Roman", Times, serif;
+  
 }
 
 .posts {
   margin: 50px 250px;
   padding: 10px 20px;
   border-top: thin solid rgba(128, 128, 128, 0.429);
-  background-color: rgba(220, 220, 220, 0.119);
+  background-color: white;
 }
 img {
   margin: 10px;

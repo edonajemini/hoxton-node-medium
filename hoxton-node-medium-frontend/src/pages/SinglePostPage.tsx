@@ -15,7 +15,7 @@ type Comments = {
   text: string;
   postId: number;
 };
-type Users = {
+type User = {
   id: ReactNode;
   username: string;
   image: string;
@@ -25,7 +25,12 @@ type Users = {
 export function SinglePostPage() {
   const [post, setPost] = useState<Post | null>(null);
   const params = useParams();
-  const [users, setUsers] = useState<Users[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
+  useEffect(() => {
+    fetch("http://localhost:4000/users")
+      .then((resp) => resp.json())
+      .then((usersFromServer) => setUsers(usersFromServer));
+  }, []);
 
   useEffect(() => {
     fetch(`http://localhost:4000/posts/${params.id}`)
@@ -42,7 +47,13 @@ export function SinglePostPage() {
           <div className="tittle">
             <img src={post.image} width="400px" />
             <p>User ID {post.userId}</p>
+            {users.filter(user => user.id === post.userId).map(user => (
+              <>
+              <p>@{user.username}</p>
+              </>
+            ))}
             <h3>{post.tittle}</h3>
+            
             <p>{post.blog}</p>
             <p>{post.blog}</p>
             <p>{post.blog}</p>
